@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unravel &amp; Co. | Handmade crochet pieces, made your way</title>
+<meta name="description" content="Unravel &amp; Co. makes cozy, stylish handmade crochet beanies, sweaters, bags, beach sets and more. Choose a piece and customize it.">
+<meta property="og:title" content="Unravel &amp; Co.">
+<meta property="og:description" content="Cozy, stylish, handmade crochet pieces, customized for you.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <a class="logo" href="#home">Unravel &amp; Co.</a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="links">Menu</button>
+  <nav id="links" aria-label="Main">
+    <a href="#home">Home</a><a href="#shop">Shop</a><a href="#order">Custom Order</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    <a class="btn small" href="#shop">Shop Now</a>
+  </nav>
+</header>
+
+<main id="main">
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h1>Unravel &amp; Co.</h1>
+    <p class="lead">Cozy, stylish crochet pieces, made by hand and shaped around you.</p>
+    <div class="row"><a class="btn" href="#shop">Shop the Collection</a><a class="btn ghost" href="#order">Create a Custom Order</a></div>
+  </div>
+  <div class="hero-art" aria-hidden="true"><span>Replace with your photo<br><small>images/hero.jpg</small></span></div>
+</section>
+
+<section class="wrap" aria-labelledby="cats-h">
+  <h2 id="cats-h">Find your piece</h2>
+  <div class="cat-row" id="cat-preview"></div>
+</section>
+
+<section class="wrap intro">
+  <p>Every piece starts as a single strand of yarn. We turn it into something you will actually want to wear and carry, and we can adjust it to your size, colour and style.</p>
+</section>
+
+<section id="shop" class="wrap" aria-labelledby="shop-h">
+  <h2 id="shop-h">Shop</h2>
+  <div class="tools">
+    <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+    <label class="srch"><span class="sr">Search products</span><input id="search" type="search" placeholder="Search pieces"></label>
+  </div>
+  <div class="grid" id="grid" aria-live="polite"></div>
+</section>
+
+<section class="wrap why" aria-labelledby="why-h">
+  <h2 id="why-h">Why Unravel &amp; Co.</h2>
+  <ul>
+    <li><strong>Handmade</strong> Crocheted by hand, one piece at a time.</li>
+    <li><strong>Made for you</strong> Choose size, colour and style details.</li>
+    <li><strong>Personal</strong> We confirm everything with you on WhatsApp.</li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="how-h">
+  <h2 id="how-h">How to order</h2>
+  <ol class="steps">
+    <li>Choose your piece</li><li>Customize your order</li><li>Submit your request</li>
+    <li>We confirm your details and price</li><li>Complete payment through WhatsApp</li><li>We prepare your order</li>
+  </ol>
+</section>
+
+<section id="order" class="wrap order" aria-labelledby="order-h">
+  <h2 id="order-h">Custom order</h2>
+  <p class="note">Submitting a request is not a payment. Nothing is charged on this website.</p>
+  <div id="order-box">
+    <form id="form" novalidate>
+      <div class="field"><label for="product">Product</label><select id="product" name="Product" required></select></div>
+      <p id="pdesc" class="note"></p>
+      <div id="dyn"></div>
+      <fieldset><legend>Your details</legend>
+        <div class="field"><label for="name">Full name</label><input id="name" name="Full name" autocomplete="name" required></div>
+        <div class="field"><label for="email">Email address</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="phone">WhatsApp / phone number</label><input id="phone" name="WhatsApp" type="tel" autocomplete="tel" required></div>
+        <div class="field"><label for="loc">Delivery location</label><input id="loc" name="Delivery location" required></div>
+      </fieldset>
+      <div class="field"><label for="notes">Special requests (optional)</label><textarea id="notes" name="Special requests" rows="3"></textarea></div>
+      <div class="field"><label for="ref">Reference image (optional, max 5 MB)</label><input id="ref" name="attachment" type="file" accept="image/*"></div>
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <div id="errs" class="errs" role="alert" tabindex="-1"></div>
+      <button class="btn" type="submit">Review order</button>
+    </form>
+    <div id="review" hidden>
+      <h3>Review your request</h3>
+      <dl id="sum"></dl>
+      <div id="rerr" class="errs" role="alert" tabindex="-1"></div>
+      <div class="row"><button class="btn ghost" id="edit" type="button">Edit Order</button><button class="btn" id="send" type="button">Submit Custom Order</button></div>
+    </div>
+    <div id="done" hidden tabindex="-1">
+      <h3>Your custom order request has been received.</h3>
+      <p>Order-request reference: <strong id="refid"></strong><br><small>This is a reference for your request, not proof of payment. No payment has been made.</small></p>
+      <p>Unravel &amp; Co. will review your request and contact you on WhatsApp to confirm availability, final customization, final price, delivery details and payment instructions.</p>
+      <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Continue to WhatsApp</a>
+      <p class="note" id="wafb"></p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="wrap" aria-labelledby="about-h">
+  <h2 id="about-h">About</h2>
+  <p class="prose">Unravel &amp; Co. is a handmade crochet brand for anyone who loves comfort with a bit of style. Each piece is made with care, and custom pieces are made to feel like yours.</p>
+  <p class="prose edit">[EDIT: add your story, your name, or your studio details here when you are ready.]</p>
+</section>
+
+<section id="faq" class="wrap" aria-labelledby="faq-h">
+  <h2 id="faq-h">FAQ</h2>
+  <div id="faqs"></div>
+</section>
+
+<section id="contact" class="wrap contact" aria-labelledby="c-h">
+  <h2 id="c-h">Contact</h2>
+  <p>Email: <a href="mailto:unravelnco@gmail.com">unravelnco@gmail.com</a><br>WhatsApp: <a href="#" data-wa>+2348025799406</a><br>Instagram: <span class="edit">[EDIT: your Instagram handle]</span></p>
+  <div class="row"><a class="btn" href="mailto:unravelnco@gmail.com">Email us</a><a class="btn ghost" href="#" data-wa target="_blank" rel="noopener">Message on WhatsApp</a></div>
+</section>
+
+<section class="final"><h2>Something made just for you</h2><a class="btn" href="#order">Create a Custom Order</a></section>
+</main>
+
+<footer>
+  <strong>Unravel &amp; Co.</strong>
+  <p>Handmade, cozy, stylish crochet pieces.</p>
+  <p><a href="#shop">Shop</a> · <a href="#order">Custom Order</a> · <a href="#about">About</a> · <a href="#faq">FAQ</a> · <a href="#contact">Contact</a></p>
+  <p>unravelnco@gmail.com · +2348025799406 · <span class="edit">[Instagram]</span></p>
+  <small>&copy; <span id="yr"></span> Unravel &amp; Co.</small>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
