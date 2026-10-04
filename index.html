@@ -84,7 +84,7 @@
         <div class="field"><label for="loc">Delivery location</label><input id="loc" name="Delivery location" required></div>
       </fieldset>
       <div class="field"><label for="notes">Special requests (optional)</label><textarea id="notes" name="Special requests" rows="3"></textarea></div>
-      <div class="field"><label for="ref">Reference image (optional, max 5 MB)</label><input id="ref" name="attachment" type="file" accept="image/*"></div>
+      <div class="field"><label for="ref">Reference image (optional)</label><p class="note" style="margin:0 0 .4rem">The image is not uploaded with this form. If you choose one, you will send it to us on WhatsApp after submitting.</p><label class="sr" for="ref">Choose reference image</label><input id="ref" name="attachment" type="file" accept="image/*"></div>
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
       <div id="errs" class="errs" role="alert" tabindex="-1"></div>
       <button class="btn" type="submit">Review order</button>
@@ -98,6 +98,7 @@
     <div id="done" hidden tabindex="-1">
       <h3>Your custom order request has been received.</h3>
       <p>Order-request reference: <strong id="refid"></strong><br><small>This is a reference for your request, not proof of payment. No payment has been made.</small></p>
+      <p id="imgnote" class="note" hidden>You chose a reference image. Please send it to us on WhatsApp using the button below and quote your reference.</p>
       <p>Unravel &amp; Co. will review your request and contact you on WhatsApp to confirm availability, final customization, final price, delivery details and payment instructions.</p>
       <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Continue to WhatsApp</a>
       <p class="note" id="wafb"></p>

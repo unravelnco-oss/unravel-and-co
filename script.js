@@ -146,21 +146,27 @@ function makeRef() {
   return "UNR-" + [...a].map(n => c[n % c.length]).join("");
 }
 
+let pendingRef = null; // kept until delivery succeeds, so retries reuse the same reference
 $("#send").onclick = async () => {
   const btn = $("#send"), err = $("#rerr"); err.textContent = ""; btn.disabled = true; btn.textContent = "Submitting…";
-  const ref = makeRef(), data = new FormData(form);
-  data.append("Order reference", ref);
-  data.append("_subject", `New custom order request ${ref} - ${sel.value}`);
-  data.append("_template", "table"); data.append("_captcha", "false");
+  const ref = pendingRef || (pendingRef = makeRef()), file = $("#ref").files[0];
+  const payload = {};
+  new FormData(form).forEach((v, k) => { if (!SKIP.includes(k) && typeof v === "string" && v.trim()) payload[k] = v.trim(); });
+  payload["Order reference"] = ref;
+  payload["Reference image"] = file ? "Customer chose '" + file.name + "' (not uploaded; customer will send it on WhatsApp)" : "None";
+  payload._subject = `New custom order request ${ref} - ${sel.value}`;
+  payload._template = "table"; payload._captcha = "false";
   try {
-    const r = await fetch(CONFIG.endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } });
-    const j = await r.json().catch(() => ({}));
-    if (!r.ok || String(j.success) !== "true") throw new Error(j.message || "Request failed");
-    $("#refid").textContent = ref; $("#wa").href = waLink(ref);
+    if (location.protocol === "file:") throw new Error("Form sending only works on the live website, not from a local file.");
+    const r = await fetch(CONFIG.endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
+    const j = await r.json().catch(() => ({})), msg = String(j.message || "");
+    if (!r.ok || String(j.success) !== "true" || /activat/i.test(msg)) throw new Error(msg || "The form service did not confirm delivery.");
+    $("#refid").textContent = ref; $("#wa").href = waLink(ref); $("#imgnote").hidden = !file;
     $("#wafb").textContent = "If WhatsApp does not open, message us on +2348025799406 and quote " + ref + ".";
-    show("done"); $("#done").focus(); form.reset(); renderFields();
+    pendingRef = null; show("done"); $("#done").focus(); form.reset(); renderFields();
   } catch (x) {
-    err.textContent = "Your request was not submitted. " + (navigator.onLine ? "Please try again, or message us on WhatsApp at +2348025799406." : "You appear to be offline. Reconnect and try again.");
+    console.error("Order submission failed:", x);
+    err.textContent = "Your request was not submitted. " + (navigator.onLine ? "Details: " + x.message + " " : "You appear to be offline. ") + "Please try again, or message us on WhatsApp at +2348025799406.";
     err.focus();
   } finally { btn.disabled = false; btn.textContent = "Submit Custom Order"; }
 };
