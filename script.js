@@ -1,8 +1,10 @@
 /* ===== EDIT HERE: settings ===== */
 const CONFIG = {
   whatsapp: "2348025799406",                 // digits only, with country code
-  email: "unravelnco@gmail.com",             // receives orders (via FormSubmit)
-  endpoint: "https://formsubmit.co/ajax/unravelnco@gmail.com"
+  email: "unravelnco@gmail.com",             // orders arrive here (via Web3Forms)
+  endpoint: "https://api.web3forms.com/submit",
+  // Paste your Web3Forms access key between the quotes. It is public by design (not a password).
+  accessKey: "PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE"
 };
 
 /* ===== EDIT HERE: products =====
@@ -154,13 +156,15 @@ $("#send").onclick = async () => {
   new FormData(form).forEach((v, k) => { if (!SKIP.includes(k) && typeof v === "string" && v.trim()) payload[k] = v.trim(); });
   payload["Order reference"] = ref;
   payload["Reference image"] = file ? "Customer chose '" + file.name + "' (not uploaded; customer will send it on WhatsApp)" : "None";
-  payload._subject = `New custom order request ${ref} - ${sel.value}`;
-  payload._template = "table"; payload._captcha = "false";
+  payload.access_key = CONFIG.accessKey;
+  payload.subject = `New custom order request ${ref} - ${sel.value}`;
+  payload.from_name = "Unravel & Co. website";
   try {
     if (location.protocol === "file:") throw new Error("Form sending only works on the live website, not from a local file.");
+    if (!CONFIG.accessKey || CONFIG.accessKey.startsWith("PASTE_")) throw new Error("The order form is not connected yet (access key missing).");
     const r = await fetch(CONFIG.endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
     const j = await r.json().catch(() => ({})), msg = String(j.message || "");
-    if (!r.ok || String(j.success) !== "true" || /activat/i.test(msg)) throw new Error(msg || "The form service did not confirm delivery.");
+    if (!r.ok || j.success !== true) throw new Error(msg || "The form service did not confirm delivery.");
     $("#refid").textContent = ref; $("#wa").href = waLink(ref); $("#imgnote").hidden = !file;
     $("#wafb").textContent = "If WhatsApp does not open, message us on +2348025799406 and quote " + ref + ".";
     pendingRef = null; show("done"); $("#done").focus(); form.reset(); renderFields();
