@@ -4,27 +4,40 @@ const CONFIG = {
   email: "unravelnco@gmail.com",             // orders arrive here (via Web3Forms)
   endpoint: "https://api.web3forms.com/submit",
   // Paste your Web3Forms access key between the quotes. It is public by design (not a password).
-  accessKey: "44ffe083-0fc0-4bf4-93bb-11f454dc13cc"
+  accessKey: "PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE"
 };
 
 /* ===== EDIT HERE: products =====
-   image: put a file path like "images/beanie.jpg" to replace the placeholder.
+   images: list as many photos as you like, e.g. ["images/products/beanies-1.jpg", "images/products/beanies-2.jpg"].
+   Leave [] to show labelled placeholders (they show the file name to use). slug = the file-name prefix.
    type decides which customization fields appear (see FIELDS below). */
+const P = (name, cat, type, slug, desc, images = []) => ({ name, cat, type, slug, desc, images });
 const PRODUCTS = [
-  { name: "Sweaters", cat: "Crochet Wear", type: "wear", image: "", desc: "A cozy handmade crochet sweater." },
-  { name: "Crochet Shirts", cat: "Crochet Wear", type: "wear", image: "", desc: "A light crochet shirt, made to fit you." },
-  { name: "Shrugs", cat: "Crochet Wear", type: "wear", image: "", desc: "A soft crochet shrug to layer over anything." },
-  { name: "Mesh Pieces", cat: "Crochet Wear", type: "wear", image: "", desc: "Airy handmade mesh crochet." },
-  { name: "Beanies", cat: "Hats & Headwear", type: "hat", image: "", desc: "A warm, snug crochet beanie." },
-  { name: "Berets", cat: "Hats & Headwear", type: "hat", image: "", desc: "A soft crochet beret with a classic shape." },
-  { name: "Ruffle Hats", cat: "Hats & Headwear", type: "hat", image: "", desc: "A crochet hat with a playful ruffled edge." },
-  { name: "Scrunchies", cat: "Accessories", type: "small", image: "", desc: "A crochet scrunchie in your colours." },
-  { name: "Hair Accessories", cat: "Accessories", type: "small", image: "", desc: "Handmade crochet hair accessories." },
-  { name: "Bags", cat: "Bags", type: "bag", image: "", desc: "A handmade crochet bag." },
-  { name: "Tote Bags", cat: "Bags", type: "bag", image: "", desc: "A roomy crochet tote for every day." },
-  { name: "Two-Piece Beach Sets", cat: "Beach Collection", type: "beach", image: "", desc: "A two-piece crochet set for the beach." },
-  { name: "Beach Sets", cat: "Beach Collection", type: "beach", image: "", desc: "A crochet beach set, made your way." },
-  { name: "Crochet Slippers", cat: "Comfort", type: "feet", image: "", desc: "Cozy handmade crochet slippers." }
+  P("Sweaters", "Crochet Wear", "wear", "sweaters", "A cozy handmade crochet sweater."),
+  P("Crochet Shirts", "Crochet Wear", "wear", "shirts", "A light crochet shirt, made to fit you."),
+  P("Shrugs", "Crochet Wear", "wear", "shrugs", "A soft crochet shrug to layer over anything."),
+  P("Mesh Pieces", "Crochet Wear", "wear", "mesh-pieces", "Airy handmade mesh crochet."),
+  P("Shorts", "Crochet Wear", "bottom", "shorts", "Handmade crochet shorts, made to fit you."),
+  P("Leg Warmers", "Crochet Wear", "legs", "leg-warmers", "Cozy handmade crochet leg warmers."),
+  P("Beanies", "Hats & Headwear", "hat", "beanies", "A warm, snug crochet beanie."),
+  P("Customized Beanies", "Hats & Headwear", "hat", "customized-beanies", "A crochet beanie designed around your ideas."),
+  P("Berets", "Hats & Headwear", "hat", "berets", "A soft crochet beret with a classic shape."),
+  P("Ruffle Hats", "Hats & Headwear", "hat", "ruffle-hats", "A crochet hat with a playful ruffled edge."),
+  P("Headbands", "Hats & Headwear", "hat", "headbands", "A handmade crochet headband."),
+  P("Scrunchies", "Accessories", "small", "scrunchies", "A crochet scrunchie in your colours."),
+  P("Hair Accessories", "Accessories", "small", "hair-accessories", "Handmade crochet hair accessories."),
+  P("Hair Clips", "Accessories", "small", "hair-clips", "Handmade crochet hair clips."),
+  P("Ruffle Socks", "Accessories", "legs", "ruffle-socks", "Handmade crochet ruffle socks."),
+  P("Keychains", "Accessories", "small", "keychains", "A handmade crochet keychain."),
+  P("Bags", "Bags", "bag", "bags", "A handmade crochet bag."),
+  P("Tote Bags", "Bags", "bag", "tote-bags", "A roomy crochet tote for every day."),
+  P("Ocean Bags", "Bags", "bag", "ocean-bags", "A handmade crochet ocean bag."),
+  P("Flower Bags", "Bags", "bag", "flower-bags", "A handmade crochet flower bag."),
+  P("Grabby Square Shoulder Bags", "Bags", "bag", "grabby-square-shoulder-bags", "A handmade crochet grabby square shoulder bag."),
+  P("Two-Piece Beach Sets", "Beach Collection", "beach", "two-piece-beach-sets", "A two-piece crochet set for the beach."),
+  P("Beach Sets", "Beach Collection", "beach", "beach-sets", "A crochet beach set, made your way."),
+  P("Crochet Slippers", "Home & Comfort", "feet", "crochet-slippers", "Cozy handmade crochet slippers."),
+  P("Blankets", "Home & Comfort", "blanket", "blankets", "A soft handmade crochet blanket.")
 ];
 const PRICE_TEXT = "Price confirmed after customization";
 
@@ -37,6 +50,9 @@ const FIELDS = {
   small: [QTY, COL, STY],
   bag: [QTY, COL, f("Bag size", "select", ["Small", "Medium", "Large"]), f("Strap", "select", ["Short", "Long", "No preference"]), STY],
   beach: [QTY, COL, f("Top size", "select", SIZES, true), f("Bottom size", "select", SIZES, true), f("Bust (cm, optional)", "text"), f("Waist (cm, optional)", "text"), f("Hips (cm, optional)", "text"), STY],
+  bottom: [QTY, f("Size", "select", SIZES, true), COL, f("Waist (cm, optional)", "text"), f("Hips (cm, optional)", "text"), f("Length (cm, optional)", "text"), STY],
+  legs: [QTY, COL, f("Size", "select", ["Small", "Medium", "Large"]), f("Length (cm, optional)", "text"), STY],
+  blanket: [QTY, COL, f("Blanket size", "select", ["Baby", "Throw", "Large", "Custom (describe in style notes)"]), STY],
   feet: [QTY, COL, f("Foot length (cm) or shoe size", "text", null, true), STY]
 };
 const FAQS = [
@@ -84,15 +100,47 @@ function renderShop() {
   const grid = $("#grid"); grid.replaceChildren();
   if (!list.length) grid.append(el("p", { className: "empty", textContent: "No pieces match. Try another category or search term." }));
   list.forEach(p => {
-    const img = p.image ? el("img", { src: p.image, alt: p.name, loading: "lazy" })
-      : el("div", { className: "ph", role: "img", ariaLabel: p.name + " photo placeholder", innerHTML: "Photo placeholder<br>" + p.name });
+    const first = p.images[0] || null;
     grid.append(el("article", { className: "card" }, [
-      el("div", { className: "imgbox" }, [img]), el("h3", { textContent: p.name }), el("p", { textContent: p.desc }),
+      el("div", { className: "imgbox" }, [el("button", { type: "button", className: "imgbtn", ariaLabel: "View photos of " + p.name, onclick: () => openPD(p) }, [slide(p, 0, first)])]),
+      el("h3", { textContent: p.name }), el("p", { textContent: p.desc }),
       el("span", { className: "price", textContent: PRICE_TEXT }),
       el("a", { className: "btn ghost", href: "#order", textContent: "Customize this", onclick: () => selectProduct(p.name) })
     ]));
   });
 }
+
+/* Photo gallery: works with 0 (placeholders), 1, or any number of images */
+const SLOTS = 5; // placeholder count when a product has no photos yet
+const photos = p => p.images.length ? p.images : Array.from({ length: SLOTS }, () => null);
+function ph(p, i) { return el("div", { className: "ph", role: "img", ariaLabel: `${p.name} photo placeholder ${i + 1}`, innerHTML: `Photo placeholder<br>${p.name}<br><small>images/products/${p.slug}-${i + 1}.jpg</small>` }); }
+function slide(p, i, src) {
+  if (!src) return ph(p, i);
+  const im = el("img", { src, alt: `${p.name} photo ${i + 1}`, loading: "lazy" });
+  im.onerror = () => im.replaceWith(ph(p, i)); // missing file falls back to a placeholder
+  return im;
+}
+const dlg = $("#pd"); let cur = null, idx = 0;
+function showPhoto(i) {
+  const list = photos(cur), n = list.length; idx = (i + n) % n;
+  $("#pd-main").replaceChildren(slide(cur, idx, list[idx]));
+  $("#pd-count").textContent = `Photo ${idx + 1} of ${n}`;
+  $("#pd-prev").hidden = $("#pd-next").hidden = n < 2; $("#pd-thumbs").hidden = n < 2;
+  $("#pd-thumbs").querySelectorAll("button").forEach((b, k) => b.setAttribute("aria-current", k === idx));
+}
+function openPD(p) {
+  cur = p; $("#pd-t").textContent = p.name; $("#pd-desc").textContent = p.desc + " " + PRICE_TEXT + ".";
+  $("#pd-thumbs").replaceChildren(...photos(p).map((src, i) => el("button", { type: "button", className: "th", ariaLabel: "Show photo " + (i + 1), onclick: () => showPhoto(i) }, [src ? el("img", { src, alt: "", loading: "lazy" }) : String(i + 1)])));
+  showPhoto(0); dlg.showModal();
+}
+$("#pd-prev").onclick = () => showPhoto(idx - 1); $("#pd-next").onclick = () => showPhoto(idx + 1);
+$("#pd-x").onclick = () => dlg.close();
+$("#pd-go").onclick = () => { selectProduct(cur.name); dlg.close(); };
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("keydown", e => { if (e.key === "ArrowLeft") showPhoto(idx - 1); if (e.key === "ArrowRight") showPhoto(idx + 1); });
+let tx = null; // swipe on touch screens
+$("#pd-main").addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+$("#pd-main").addEventListener("touchend", e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx) > 40) showPhoto(idx + (dx < 0 ? 1 : -1)); });
 renderShop();
 
 /* FAQ */
