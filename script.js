@@ -4,7 +4,7 @@ const CONFIG = {
   email: "unravelnco@gmail.com",             // orders arrive here (via Web3Forms)
   endpoint: "https://api.web3forms.com/submit",
   // Paste your Web3Forms access key between the quotes. It is public by design (not a password).
-  accessKey: "PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE"
+  accessKey: "44ffe083-0fc0-4bf4-93bb-11f454dc13cc"
 };
 
 /* ===== EDIT HERE: products =====
