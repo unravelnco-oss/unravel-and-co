@@ -4,47 +4,38 @@ const CONFIG = {
   email: "unravelnco@gmail.com",             // orders arrive here (via Web3Forms)
   endpoint: "https://api.web3forms.com/submit",
   // Paste your Web3Forms access key between the quotes. It is public by design (not a password).
-  accessKey: "44ffe083-0fc0-4bf4-93bb-11f454dc13cc"
+  accessKey: "PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE"
 };
 
 /* ===== EDIT HERE: products =====
-   images: list as many photos as you like, e.g. ["images/products/beanies-1.jpg", "images/products/beanies-2.jpg"].
-   Leave [] to show labelled placeholders (they show the file name to use). slug = the file-name prefix.
+   images: exact file names inside images/products/ (spelling, capitals and the .jpg.jpeg ending must match).
+   Add as many as you like. Leave I() empty to show labelled placeholders. slug = placeholder file-name prefix.
    type decides which customization fields appear (see FIELDS below). */
+const I = (...files) => files.map(f => "images/products/" + f);
 const P = (name, cat, type, slug, desc, images = []) => ({ name, cat, type, slug, desc, images });
 const PRODUCTS = [
-  P("Sweaters", "Crochet Wear", "wear", "sweaters", "A cozy handmade crochet sweater."),
-  P("Crochet Shirts", "Crochet Wear", "wear", "shirts", "A light crochet shirt, made to fit you."),
-  P("Shrugs", "Crochet Wear", "wear", "shrugs", "A soft crochet shrug to layer over anything."),
-  P("Mesh Pieces", "Crochet Wear", "wear", "mesh-pieces", "Airy handmade mesh crochet."),
-  P("Shorts", "Crochet Wear", "bottom", "shorts", "Handmade crochet shorts, made to fit you."),
-  P("Leg Warmers", "Crochet Wear", "legs", "leg-warmers", "Cozy handmade crochet leg warmers."),
-  P("Beanies", "Hats & Headwear", "hat", "beanies", "A warm, snug crochet beanie.", [
-  "images/products/Beanie1.jpg.jpeg",
-  "images/products/Beanie3.jpg.jpeg",
-]),
-  P("Customized Beanies", "Hats & Headwear", "hat", "customized-beanies", "A crochet beanie designed around your ideas."),
-  P("Berets", "Hats & Headwear", "hat", "berets", "A soft crochet beret with a classic shape."),
-  P("Ruffle Hats", "Hats & Headwear", "hat", "ruffle-hats", "A crochet hat with a playful ruffled edge."),
-  P("Headbands", "Hats & Headwear", "hat", "headbands", "A handmade crochet headband."),
-  P("Scrunchies", "Accessories", "small", "scrunchies", "A crochet scrunchie in your colours."),
-  P("Hair Accessories", "Accessories", "small", "hair-accessories", "Handmade crochet hair accessories."),
-  P("Hair Clips", "Accessories", "small", "hair-clips", "Handmade crochet hair clips."),
-  P("Ruffle Socks", "Accessories", "legs", "ruffle-socks", "Handmade crochet ruffle socks."),
-  P("Keychains", "Accessories", "small", "keychains", "A handmade crochet keychain."),
-  P("Bags", "Bags", "bag", "bags", "A handmade crochet bag."),
-  P("Tote Bags", "Bags", "bag", "tote-bags", "A roomy crochet tote for every day.", [
-  "images/products/Tote2.jpg.jpeg",
-  "images/products/Totebag2.jpg.jpeg",
-  "images/products/Totebag.jpg.jpeg"
-]),
-  P("Ocean Bags", "Bags", "bag", "ocean-bags", "A handmade crochet ocean bag."),
-  P("Flower Bags", "Bags", "bag", "flower-bags", "A handmade crochet flower bag."),
-  P("Grabby Square Shoulder Bags", "Bags", "bag", "grabby-square-shoulder-bags", "A handmade crochet grabby square shoulder bag."),
-  P("Two-Piece Beach Sets", "Beach Collection", "beach", "two-piece-beach-sets", "A two-piece crochet set for the beach."),
-  P("Beach Sets", "Beach Collection", "beach", "beach-sets", "A crochet beach set, made your way."),
-  P("Crochet Slippers", "Home & Comfort", "feet", "crochet-slippers", "Cozy handmade crochet slippers."),
-  P("Blankets", "Home & Comfort", "blanket", "blankets", "A soft handmade crochet blanket.")
+  P("Sweaters", "Crochet Wear", "wear", "sweaters", "A cozy handmade crochet sweater.", I("Sweats.jpg.jpeg", "Swaettt.jpg.jpeg", "Swearrrt.jpg.jpeg", "Swearrr.jpg.jpeg")),
+  P("Shrugs", "Crochet Wear", "wear", "shrugs", "A soft crochet shrug to layer over anything.", I("Shrug.jpg.jpeg", "Shrugs.jpg.jpeg", "Shrug2.jpg.jpeg")),
+  P("Shorts", "Crochet Wear", "bottom", "shorts", "Handmade crochet shorts, made to fit you.", I("Shorts.jpg .jpeg", "Shorts.jpg.jpeg")),
+  P("Beanies", "Hats & Headwear", "hat", "beanies", "A warm, snug crochet beanie.", I("Beanie1.jpg.jpeg", "Beanie3.jpg.jpeg")),
+  P("Customized Beanies", "Hats & Headwear", "hat", "customized-beanies", "A crochet beanie designed around your ideas.", I("Beanies2.jpg.jpeg", "Beanie4.jpg.jpeg")),
+  P("Berets", "Hats & Headwear", "hat", "berets", "A soft crochet beret with a classic shape.", I("Beret.jpg.jpeg", "Beret1.jpg.jpeg", "Beret2.jpg.jpeg", "Berets.jpg.jpeg")),
+  P("Ruffle Hats", "Hats & Headwear", "hat", "ruffle-hats", "A crochet hat with a playful ruffled edge.", I("Chelly.jpg.jpeg", "Chellys.jpg.jpeg", "Chelly1.jpg.jpeg", "Chelly2.jpg.jpeg")),
+  P("Headbands", "Hats & Headwear", "hat", "headbands", "A handmade crochet headband."),            // TODO: photos not mapped yet
+  P("Scrunchies", "Accessories", "small", "scrunchies", "A crochet scrunchie in your colours.", I("Scrunchie.jpg.jpeg", "Srunchiess.jpg.jpeg")),
+  P("Hair Accessories", "Accessories", "small", "hair-accessories", "Handmade crochet hair accessories.", I("Hair.jpg.jpeg")),
+  P("Hair Clips", "Accessories", "small", "hair-clips", "Handmade crochet hair clips."),           // TODO: photos not mapped yet
+  P("Ruffle Socks", "Accessories", "legs", "ruffle-socks", "Handmade crochet ruffle socks."),     // TODO: photos not mapped yet
+  P("Keychains", "Accessories", "small", "keychains", "A handmade crochet keychain."),            // TODO: photos not mapped yet
+  P("Bags", "Bags", "bag", "bags", "A handmade crochet bag.", I("Bags3.jpg.jpeg")),
+  P("Tote Bags", "Bags", "bag", "tote-bags", "A roomy crochet tote for every day.", I("Tote2.jpg.jpeg", "Totebag2.jpg.jpeg", "Totebag.jpg.jpeg")),
+  P("Ocean Bags", "Bags", "bag", "ocean-bags", "A handmade crochet ocean bag.", I("Ocean.jpg.jpeg", "Oceans.jpg.jpeg", "Oceanbg.jpg.jpeg")),
+  P("Flower Bags", "Bags", "bag", "flower-bags", "A handmade crochet flower bag.", I("IMG_0971.jpg.jpeg", "IMG_0973.jpg.jpeg", "IMG_0974.jpg.jpeg")),
+  P("Granny Square Shoulder Bag", "Bags", "bag", "granny-square-shoulder-bag", "A handmade crochet granny square shoulder bag.", I("Shld.jpg.jpeg")),
+  P("Two-Piece Beach Sets", "Beach Collection", "beach", "two-piece-beach-sets", "A two-piece crochet set for the beach.", I("Set1.jpg.jpeg", "Sets2.jpg.jpeg", "Set4.jpg.jpeg")),
+  P("Beach Sets", "Beach Collection", "beach", "beach-sets", "A crochet beach set, made your way."),   // TODO: photos not mapped yet
+  P("Crochet Slippers", "Home & Comfort", "feet", "crochet-slippers", "Cozy handmade crochet slippers.", I("Slippers.jpg.jpeg", "Slippers2.jpg.jpeg")),
+  P("Blankets", "Home & Comfort", "blanket", "blankets", "A soft handmade crochet blanket.", I("Blanks.jpg.jpeg", "Blankn.jpg.jpeg", "Blankly.jpg.jpeg", "Blanketsss.jpg.jpeg"))
 ];
 const PRICE_TEXT = "Price confirmed after customization";
 
@@ -78,9 +69,9 @@ const $ = (s, r = document) => r.querySelector(s);
 const el = (t, props = {}, kids = []) => { const e = Object.assign(document.createElement(t), props); kids.forEach(k => e.append(k)); return e; };
 
 /* Reusable WhatsApp link (works on mobile and desktop) */
-function waLink(ref) {
+function waLink(ref, product) {
   const msg = ref
-    ? `Hi Unravel & Co.! I just submitted a custom order. My order reference is ${ref}. I'd like to confirm my order and payment details.`
+    ? `Hi Unravel & Co.! I just submitted a custom order${product ? " for " + product : ""}. My order reference is ${ref}. I'd like to confirm my order and payment details.`
     : "Hi Unravel & Co.! I'd like to ask about a custom order.";
   return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
 }
@@ -121,11 +112,14 @@ function renderShop() {
 const SLOTS = 5; // placeholder count when a product has no photos yet
 const photos = p => p.images.length ? p.images : Array.from({ length: SLOTS }, () => null);
 function ph(p, i) { return el("div", { className: "ph", role: "img", ariaLabel: `${p.name} photo placeholder ${i + 1}`, innerHTML: `Photo placeholder<br>${p.name}<br><small>images/products/${p.slug}-${i + 1}.jpg</small>` }); }
-function slide(p, i, src) {
-  if (!src) return ph(p, i);
-  const im = el("img", { src, alt: `${p.name} photo ${i + 1}`, loading: "lazy" });
-  im.onerror = () => im.replaceWith(ph(p, i)); // missing file falls back to a placeholder
-  return im;
+function slide(p, i, src) { return src ? pic(p, src, `${p.name} photo ${i + 1}`) : ph(p, i); }
+// Spaces in file names are encoded for the browser; a file that fails to load is skipped, never shown broken.
+const pic = (p, src, alt) => { const im = el("img", { src: encodeURI(src), alt, loading: "lazy" }); im.onerror = () => dropImage(p, src); return im; };
+function dropImage(p, src) {
+  if (!p.images.includes(src)) return;
+  console.warn("Photo file not found, skipping:", src);
+  p.images = p.images.filter(x => x !== src);
+  renderShop(); if (dlg.open && cur === p) openPD(p, Math.min(idx, photos(p).length - 1));
 }
 const dlg = $("#pd"); let cur = null, idx = 0;
 function showPhoto(i) {
@@ -135,10 +129,10 @@ function showPhoto(i) {
   $("#pd-prev").hidden = $("#pd-next").hidden = n < 2; $("#pd-thumbs").hidden = n < 2;
   $("#pd-thumbs").querySelectorAll("button").forEach((b, k) => b.setAttribute("aria-current", k === idx));
 }
-function openPD(p) {
+function openPD(p, start = 0) {
   cur = p; $("#pd-t").textContent = p.name; $("#pd-desc").textContent = p.desc + " " + PRICE_TEXT + ".";
-  $("#pd-thumbs").replaceChildren(...photos(p).map((src, i) => el("button", { type: "button", className: "th", ariaLabel: "Show photo " + (i + 1), onclick: () => showPhoto(i) }, [src ? el("img", { src, alt: "", loading: "lazy" }) : String(i + 1)])));
-  showPhoto(0); dlg.showModal();
+  $("#pd-thumbs").replaceChildren(...photos(p).map((src, i) => el("button", { type: "button", className: "th", ariaLabel: "Show photo " + (i + 1), onclick: () => showPhoto(i) }, [src ? pic(p, src, "") : String(i + 1)])));
+  showPhoto(start); if (!dlg.open) dlg.showModal();
 }
 $("#pd-prev").onclick = () => showPhoto(idx - 1); $("#pd-next").onclick = () => showPhoto(idx + 1);
 $("#pd-x").onclick = () => dlg.close();
@@ -220,7 +214,7 @@ $("#send").onclick = async () => {
     const r = await fetch(CONFIG.endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
     const j = await r.json().catch(() => ({})), msg = String(j.message || "");
     if (!r.ok || j.success !== true) throw new Error(msg || "The form service did not confirm delivery.");
-    $("#refid").textContent = ref; $("#wa").href = waLink(ref); $("#imgnote").hidden = !file;
+    $("#refid").textContent = ref; $("#wa").href = waLink(ref, sel.value); $("#imgnote").hidden = !file;
     $("#wafb").textContent = "If WhatsApp does not open, message us on +2348025799406 and quote " + ref + ".";
     pendingRef = null; show("done"); $("#done").focus(); form.reset(); renderFields();
   } catch (x) {
