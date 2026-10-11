@@ -33,7 +33,11 @@ const PRODUCTS = [
   P("Ruffle Socks", "Accessories", "legs", "ruffle-socks", "Handmade crochet ruffle socks."),
   P("Keychains", "Accessories", "small", "keychains", "A handmade crochet keychain."),
   P("Bags", "Bags", "bag", "bags", "A handmade crochet bag."),
-  P("Tote Bags", "Bags", "bag", "tote-bags", "A roomy crochet tote for every day."),
+  P("Tote Bags", "Bags", "bag", "tote-bags", "A roomy crochet tote for every day.", [
+  "images/products/Tote2.jpg.jpeg",
+  "images/products/Totebag2.jpg.jpeg",
+  "images/products/Totebag.jpg.jpeg"
+]),
   P("Ocean Bags", "Bags", "bag", "ocean-bags", "A handmade crochet ocean bag."),
   P("Flower Bags", "Bags", "bag", "flower-bags", "A handmade crochet flower bag."),
   P("Grabby Square Shoulder Bags", "Bags", "bag", "grabby-square-shoulder-bags", "A handmade crochet grabby square shoulder bag."),
