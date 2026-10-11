@@ -21,9 +21,7 @@ const PRODUCTS = [
   P("Leg Warmers", "Crochet Wear", "legs", "leg-warmers", "Cozy handmade crochet leg warmers."),
   P("Beanies", "Hats & Headwear", "hat", "beanies", "A warm, snug crochet beanie.", [
   "images/products/Beanie1.jpg.jpeg",
-  "images/products/Beanies2.jpg.jpeg",
   "images/products/Beanie3.jpg.jpeg",
-  "images/products/Beanie4.jpg.jpeg"
 ]),
   P("Customized Beanies", "Hats & Headwear", "hat", "customized-beanies", "A crochet beanie designed around your ideas."),
   P("Berets", "Hats & Headwear", "hat", "berets", "A soft crochet beret with a classic shape."),
