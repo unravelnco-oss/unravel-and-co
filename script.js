@@ -20,7 +20,7 @@ const PRODUCTS = [
   P("Beanies", "Hats & Headwear", "hat", "beanies", "A warm, snug crochet beanie.", I("Beanie1.jpg .jpeg", "Beanie3.jpg.jpeg")),
   P("Customized Beanies", "Hats & Headwear", "hat", "customized-beanies", "A crochet beanie designed around your ideas.", I("Beanies2.jpg.jpeg", "Beanie4.jpg .jpeg")),
   P("Berets", "Hats & Headwear", "hat", "berets", "A soft crochet beret with a classic shape.", I("Beret.jpg.jpeg", "Beret1.jpg .jpeg", "Beret2.jpg.jpeg", "Berets.jpg.jpeg")),
-  P("Ruffle Hats", "Hats & Headwear", "hat", "ruffle-hats", "A crochet hat with a playful ruffled edge.", I("Chelly.jpg.jpeg", "Chellys.jpg.jpeg", "Chelly1.jpg.jpeg", "Chelly2.jpg.jpeg")),
+  P("Ruffle Hats", "Hats & Headwear", "hat", "ruffle-hats", "A crochet hat with a playful ruffled edge.", I("Chelly.jpg.jpeg", "Chellys.jpg .jpeg", "Chelly1.jpg.jpeg", "Chelly2.jpg.jpeg")),
   P("Headbands", "Hats & Headwear", "hat", "headbands", "A handmade crochet headband."),            // TODO: photos not mapped yet
   P("Scrunchies", "Accessories", "small", "scrunchies", "A crochet scrunchie in your colours.", I("Scrunchie.jpg.jpeg", "Srunchiess.jpg.jpeg")),
   P("Hair Accessories", "Accessories", "small", "hair-accessories", "Handmade crochet hair accessories.", I("Hair.jpg.jpeg")),
