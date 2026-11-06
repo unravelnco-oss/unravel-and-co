@@ -27,7 +27,7 @@ const PRODUCTS = [
   P("Hair Clips", "Accessories", "small", "hair-clips", "Handmade crochet hair clips."),           // TODO: photos not mapped yet
   P("Ruffle Socks", "Accessories", "legs", "ruffle-socks", "Handmade crochet ruffle socks."),     // TODO: photos not mapped yet
   P("Keychains", "Accessories", "small", "keychains", "A handmade crochet keychain."),            // TODO: photos not mapped yet
-  P("Bags", "Bags", "bag", "bags", "A handmade crochet bag.", I("Bags3.jpg.jpeg")),
+  P("Bags", "Bags", "bag", "bags", "A handmade crochet bag.", I("Bags3.jpg .jpeg")),
   P("Tote Bags", "Bags", "bag", "tote-bags", "A roomy crochet tote for every day.", I("Tote2.jpg.jpeg", "Totebag2.jpg.jpeg", "Totebag.jpg.jpeg")),
   P("Ocean Bags", "Bags", "bag", "ocean-bags", "A handmade crochet ocean bag.", I("Ocean.jpg.jpeg", "Oceans.jpg.jpeg", "Oceanbg.jpg.jpeg")),
   P("Flower Bags", "Bags", "bag", "flower-bags", "A handmade crochet flower bag.", I("IMG_0971.jpg.jpeg", "IMG_0973.jpg.jpeg", "IMG_0974.jpg.jpeg")),
