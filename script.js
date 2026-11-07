@@ -23,19 +23,19 @@ const PRODUCTS = [
   P("Ruffle Hats", "Hats & Headwear", "hat", "ruffle-hats", "A crochet hat with a playful ruffled edge.", I("Chelly.jpg.jpeg", "Chellys.jpg .jpeg", "Chelly1.jpg.jpeg", "Chelly2.jpg.jpeg")),
   P("Headbands", "Hats & Headwear", "hat", "headbands", "A handmade crochet headband."),            // TODO: photos not mapped yet
   P("Scrunchies", "Accessories", "small", "scrunchies", "A crochet scrunchie in your colours.", I("Scrunchie.jpg.jpeg", "Srunchiess.jpg.jpeg")),
-  P("Hair Accessories", "Accessories", "small", "hair-accessories", "Handmade crochet hair accessories.", I("Hairclip.jpg.jpeg")),
-  P("Hair Clips", "Accessories", "small", "hair-clips", "Handmade crochet hair clips."),           // ('Haircliis.jpg.hpegTODO: photos not mapped yet
-  P("Ruffle Socks", "Accessories", "legs", "ruffle-socks", "Handmade crochet ruffle socks."),     // TODO: photos not mapped yet
-  P("Keychains", "Accessories", "small", "keychains", "A handmade crochet keychain."),            // TODO: photos not mapped yet
-  P("Bags", "Bags", "bag", "bags", "A handmade crochet bag.", I("Bags3.jpg .jpeg")),
+  P("Hair Accessories", "Accessories", "small", "hair-accessories", "Handmade crochet hair accessories.", I("Hair.jpg.jpeg")),
+  P("Hair Clips", "Accessories", "small", "hair-clips", "Handmade crochet hair clips."), ("Hairclip.jpg.jpeg", "Hairclipsss.jpg .jpeg")
+  P("Ruffle Socks", "Accessories", "legs", "ruffle-socks", "Handmade crochet ruffle socks."),(
+  P("Keychains", "Accessories", "small", "keychains", "A handmade crochet keychain."), ("Key.jpg.jpeg", "Keychain.jpg.jpeg")
+  P("Bags", "Bags", "bag", "bags", "A handmade crochet bag.", I("Bags3.jpg .jpeg", "Bag.jpg.jpeg", Bags.jpg .jpeg", Bags3.jpg .jpeg")),
   P("Tote Bags", "Bags", "bag", "tote-bags", "A roomy crochet tote for every day.", I("Tote2.jpg.jpeg", "Totebag2.jpg.jpeg", "Totebag.jpg.jpeg")),
   P("Ocean Bags", "Bags", "bag", "ocean-bags", "A handmade crochet ocean bag.", I("Ocean.jpg.jpeg", "Oceans.jpg.jpeg", "Oceanbg.jpg.jpeg")),
   P("Flower Bags", "Bags", "bag", "flower-bags", "A handmade crochet flower bag.", I("IMG_0971.jpg.jpeg", "IMG_0973.jpg.jpeg", "IMG_0974.jpg.jpeg")),
   P("Granny Square Shoulder Bag", "Bags", "bag", "granny-square-shoulder-bag", "A handmade crochet granny square shoulder bag.", I("Shld.jpg.jpeg")),
-  P("Two-Piece Beach Sets", "Beach Collection", "beach", "two-piece-beach-sets", "A two-piece crochet set for the beach.", I("Set1.jpg.jpeg", "Sets2.jpg.jpeg", "Set4.jpg.jpeg")),
+  P("Two-Piece Beach Sets", "Beach Collection", "beach", "two-piece-beach-sets", "A two-piece crochet set for the beach.", I("Set1.jpg .jpeg", "Sets2.jpg .jpeg", "Set4.jpg.jpeg")),
   P("Beach Sets", "Beach Collection", "beach", "beach-sets", "A crochet beach set, made your way."),   // TODO: photos not mapped yet
   P("Crochet Slippers", "Home & Comfort", "feet", "crochet-slippers", "Cozy handmade crochet slippers.", I("Slippers.jpg.jpeg", "Slippers2.jpg.jpeg")),
-  P("Blankets", "Home & Comfort", "blanket", "blankets", "A soft handmade crochet blanket.", I("Blanks.jpg.jpeg", "Blankn.jpg.jpeg", "Blankly.jpg.jpeg", "Blanketsss.jpg.jpeg"))
+  P("Blankets", "Home & Comfort", "blanket", "blankets", "A soft handmade crochet blanket.", I("Blanks.jpg.jpeg", "Blackn.jpg.jpeg", "Blankly.jpg.jpeg", "Blanketsss.jpeg"))
 ];
 const PRICE_TEXT = "Price confirmed after customization";
 
